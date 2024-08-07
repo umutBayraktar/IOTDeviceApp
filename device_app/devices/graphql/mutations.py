@@ -20,10 +20,10 @@ class DeleteDevice(graphene.Mutation):
     ok = graphene.Boolean()
 
     class Arguments:
-        id = graphene.ID(required=True)
+        name = graphene.String(required=True)
 
-    def mutate(self, info, id):
-        device = Device.objects.get(pk=id)
+    def mutate(self, info, name):
+        device = Device.objects.get(name=name)
         device.delete()
         return DeleteDevice(ok=True)
 
