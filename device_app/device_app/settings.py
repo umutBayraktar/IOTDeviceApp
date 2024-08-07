@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     # our apps
     'devices',
     'locations',
+    # third party apps
+    'graphene_django',
+    'django_redis',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'device_app.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
