@@ -8,7 +8,7 @@ class Query(graphene.ObjectType):
     device_by_name = graphene.Field(DeviceType, name=graphene.String(required=True))
 
     def resolve_all_devices(self, info):
-        return Device.objects.all()
+        return Device.objects.prefetch_related('location_set').all()
 
     def resolve_device_by_name(self, info, name):
-        return Device.objects.get(name=name)
+        return Device.objects.prefetch_related('location_set').filter(name=name).first()
