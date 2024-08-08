@@ -20,7 +20,7 @@ def accept_wrapper(sock):
 
 
 host = config("HOST", default="localhost")
-port = config("PORT", default=65432)
+port = config("PORT", default=65432, cast=int)
 
 lsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Avoid bind() exception: OSError: [Errno 48] Address already in use

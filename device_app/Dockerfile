@@ -9,9 +9,8 @@ RUN apt-get -y install binutils libproj-dev gdal-bin postgresql-client python3-l
 RUN apt-get -y install libmemcached-dev
 
 RUN mkdir /code
-WORKDIR /code
 COPY ./device_app /code/
+WORKDIR /code
 RUN pip install -r requirements.txt
-COPY ./device_app/scripts/entrypoint.sh /code/scripts/entrypoint.sh
-RUN chmod +x /code/scripts/entrypoint.sh
-CMD ["/code/repo/IOTDeviceApp/device_app/scripts/entrypoint.sh"]
+RUN chmod +x entrypoint.sh
+CMD ["sh", "entrypoint.sh"]
