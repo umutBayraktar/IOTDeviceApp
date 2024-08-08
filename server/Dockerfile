@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 # COPY . /code/
 EXPOSE 65432
 
-CMD ["python", "server/server.py"]
+CMD ["python", "server.py"]
