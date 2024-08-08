@@ -35,5 +35,27 @@
          docker compose restart device_app
 
 
-# Device App arayuzu buradan goruntulenebilir
+# Device App arayuzu icin
 http://127.0.0.1:8000/graphql/
+
+
+
+# client ile location bilgisi gondermek icin
+
+       docker exec -it tcp-app-server python client.py
+
+komutunu calistirabilirsiniz:
+
+### ! komut device1, device2, device3, device4 ve device5 adinda 5 tane device in tanimli oldugunu varsayar, komutu calistirmadan once 
+http://127.0.0.1:8000/graphql/ endpointinde createDevice mutationunu calistirarak olusturabilirsiniz
+
+ornek kullanim:
+
+       mutation MyMutation {
+              createDevice(name: "device1") {
+                     device {
+                     name
+                     }
+                   }
+              }
+       
