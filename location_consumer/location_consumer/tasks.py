@@ -11,7 +11,9 @@ def create_location(ch, method, properties, body):
     latitude = data.get('latitude')
     longitude = data.get('longitude')
     timestamp = data.get('timestamp')
-    device = Device.objects.get(name=device_name)
+    device = Device.objects.filter(name=device_name).first()
+    if not device:
+        ch.basic_ack(delivery_tag=method.delivery_tag)
     Location.objects.create(
         device=device,
         latitude=latitude,
