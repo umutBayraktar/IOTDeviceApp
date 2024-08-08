@@ -9,7 +9,7 @@ RUN apt-get -y install binutils libproj-dev gdal-bin postgresql-client python3-l
 RUN apt-get -y install libmemcached-dev
 
 RUN mkdir /code
-COPY ./device_app /code/
+COPY . /code/
 WORKDIR /code
 RUN pip install -r requirements.txt
 RUN chmod +x entrypoint.sh

@@ -29,8 +29,8 @@ services:
   # Django
   server:
     build:
-      context: .
-      dockerfile: ./server/Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     container_name: tcp-app-server
     hostname: server
     env_file:
@@ -41,8 +41,8 @@ services:
         - rabbit
   location_consumer:
     build:
-      context: .
-      dockerfile: ./location_consumer/Dockerfile
+      context: ./location_consumer
+      dockerfile: Dockerfile
     container_name: location-consumer
     hostname: location_consumer
     env_file:
@@ -54,8 +54,8 @@ services:
     restart: always
   device_app:
     build:
-      context: .
-      dockerfile: ./device_app/Dockerfile
+      context: ./device_app
+      dockerfile: Dockerfile
     container_name: device-app
     hostname: device_app
     env_file:
@@ -65,9 +65,6 @@ services:
     # (whatever that means for your particular application) - only until it’s
     # running. There’s a good reason for this.
     # command: sh ./device_app/scripts/entrypoint.sh db
-    volumes:
-      # Mount src to app
-      - ../..:/code/
     ports:
        - "8000:8000"
     depends_on:
